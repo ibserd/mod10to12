@@ -5,11 +5,11 @@ Button.prototype = {
   create: function() {
     this.$element = $('<button>');
     this.$element.text(this.text);
-    var self = this
+    var self = this;
     this.$element.click(function() {
       alert(self.text);
     });
-    $('<body>').append(this.$element);
+    $('body').append(this.$element);
   }
 }
 
