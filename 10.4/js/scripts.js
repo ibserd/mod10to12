@@ -10,7 +10,7 @@ Telefon.prototype.printInfo = function() {
 
 var iphone6s = new Telefon("Apple", 3500, "czarny"),
     GalaxyS6 = new Telefon("Samsung", 2500, "czarny"),
-    P9 = new Telefon("Huwawei", 1100, "biały");
+    P9 = new Telefon("Huawei", 1100, "biały");
 
 P9.printInfo();
 GalaxyS6.printInfo();
