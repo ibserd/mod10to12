@@ -1,4 +1,17 @@
-$(function() {
+/*jslint browser: true*/
+/*global $, jQuery, alert*/
+$(function () {
+  'use strict';
+  function randomString() {
+    var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ',
+        str = '',
+        i = 0;
+    for (i = 0; i < 10; i += 1) {
+      str += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return str;
+  }
+  
   function Column(name) {
     var self = this;
 			
@@ -14,11 +27,11 @@ $(function() {
           $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
       
       $columnDelete.click(function() {
-        self.removeColumn(),
+        self.removeColumn();
       });
         
       $columnAddCard.click(function(event) {
-        self.addCard(new Card('prompt("Wpisz nazwę karty")')); 
+        self.addCard(new Card(prompt("Wpisz nazwę karty"))); 
       });
         
       $column.append($columnTitle)
@@ -73,22 +86,17 @@ $(function() {
       this.$element.append(column.$element);
       initSortable();
     },
-    $element: $('#board .column-container'); // DLACZEGO TU NIE MA ZNAKU RÓWNOŚCI?
+    $element: $('#board .column-container'),
   };
     
-  addColumn: function(column) {
-    this.$element.append(column.$element);
-    initSortable();
-  };
   function initSortable() {
     $('.column-card-list').sortable({
       connectWith: '.column-card-list',
-      placeholder: 'card-placeholder';
+      placeholder: 'card-placeholder',
     }).disableSelection();
-  };
+  }
     
-  $('.create-column')
-    .click(function() {
+  $('.create-column').click(function() {
     var name = prompt('Wpisz nazwę kolumny');
     var column = new Column(name);
     board.addColumn(column);
